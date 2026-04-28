@@ -1,4 +1,4 @@
-const { SCHEMA_VERSION } = require('../../models/index.js');
+const { SCHEMA_VERSION, STANDARD_INITIAL_FEN } = require('../../models/index.js');
 const { corruptedData, unsupportedSchema } = require('./errors.js');
 
 function assertObject(value, path) {
@@ -37,6 +37,8 @@ function validateOpening(opening, index) {
   assertString(opening.id, `${path}.id`);
   assertString(opening.name, `${path}.name`);
   assertSide(opening.practiceSide, `${path}.practiceSide`);
+  if (!opening.initialFen) opening.initialFen = STANDARD_INITIAL_FEN;
+  assertString(opening.initialFen, `${path}.initialFen`);
   assertArray(opening.tags, `${path}.tags`);
   opening.tags.forEach((tag, tagIndex) => assertString(tag, `${path}.tags[${tagIndex}]`));
   assertString(opening.color, `${path}.color`);

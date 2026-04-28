@@ -34,6 +34,7 @@ const STANDARD_INITIAL_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq
  * @property {string} id
  * @property {string} name
  * @property {ChessSide} practiceSide
+ * @property {string} initialFen
  * @property {string[]} tags
  * @property {string} color
  * @property {number} createdAt
