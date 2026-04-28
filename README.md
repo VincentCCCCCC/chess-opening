@@ -1,2 +1,2 @@
 # chess-opening
-WeChat mini program about chess opening practice
+WeChat mini game about chess opening practice

@@ -1,0 +1,8 @@
+# WeChat DevTools local project settings
+project.private.config.json
+
+# Dependencies and build output
+node_modules/
+dist/
+.temp/
+.DS_Store

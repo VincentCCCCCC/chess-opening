@@ -1,12 +1,12 @@
-# 国际象棋开局记录与练习小程序设计 Guideline
+# 国际象棋开局记录与练习小游戏设计 Guideline
 
-本文档是后续产品、交互、数据结构、页面、组件和实现设计的统一准则。除非后续明确变更，所有功能设计都应以本文档为基准。
+本文档是后续产品、交互、数据结构、游戏场景、渲染模块和实现设计的统一准则。除非后续明确变更，所有功能设计都应以本文档为基准。
 
 ## 1. 产品定位
 
 ### 1.1 产品一句话
 
-一个面向个人使用的微信小程序，用棋盘完成国际象棋开局变式的记录、浏览和记忆练习。
+一个面向个人使用的微信小游戏，用 Canvas 棋盘完成国际象棋开局变式的记录、浏览和记忆练习。
 
 ### 1.2 核心目标
 
@@ -57,7 +57,7 @@
 3. 输入开局名称。
 4. 选择练习方：白方或黑方。
 5. 可选添加标签，用于区分开局。
-6. 保存后进入开局详情页。
+6. 保存后进入开局详情场景。
 
 #### 场景 B：创建一条变式
 
@@ -65,7 +65,7 @@
 
 流程：
 
-1. 进入开局详情页。
+1. 进入开局详情场景。
 2. 点击“新建变式”。
 3. 在棋盘上依次走双方棋子。
 4. 程序校验每一步是否合法。
@@ -79,7 +79,7 @@
 
 流程：
 
-1. 进入开局详情页。
+1. 进入开局详情场景。
 2. 从变式列表选择一条变式。
 3. 棋盘显示初始局面。
 4. 用户点击走法列表中的任一步，棋盘跳转到对应局面。
@@ -91,7 +91,7 @@
 
 流程：
 
-1. 进入开局详情页。
+1. 进入开局详情场景。
 2. 点击“顺序练习”。
 3. 程序从第一条待练变式开始。
 4. 用户走自己一方的棋子。
@@ -105,7 +105,7 @@
 
 流程：
 
-1. 进入开局详情页。
+1. 进入开局详情场景。
 2. 点击“随机练习”。
 3. 程序随机排列该开局下的变式。
 4. 每条变式内部仍按正常走法顺序练习。
@@ -117,27 +117,27 @@
 
 第一版建议只保留一个主入口：开局库。
 
-页面结构：
+场景结构：
 
-- 首页 / 开局库
+- 开局库
 - 开局详情
 - 变式编辑
 - 变式浏览
-- 练习页
-- 设置页，可后置
+- 练习
+- 设置，可后置
 
-不建议第一版做复杂 TabBar。由于应用是个人工具，核心路径应集中在“开局库 -> 开局详情 -> 棋盘操作”。
+小游戏第一版不做复杂导航框架。由于应用是个人工具，核心路径应集中在“开局库 -> 开局详情 -> 棋盘操作”。
 
 ### 3.2 首页：开局库
 
-首页职责：
+开局库场景职责：
 
 - 展示所有开局。
 - 创建开局。
 - 快速进入最近练习的开局。
 - 通过标签或颜色区分开局。
 
-首页信息：
+开局库场景信息：
 
 - 开局名称。
 - 练习方：白方 / 黑方。
@@ -146,18 +146,18 @@
 - 最近练习时间。
 - 最近正确率或连续全对次数。
 
-首页主要操作：
+开局库场景主要操作：
 
 - 新建开局。
 - 进入开局详情。
 - 编辑开局基础信息。
 - 删除开局，需二次确认。
 
-### 3.3 开局详情页
+### 3.3 开局详情场景
 
-开局详情页是产品核心页。
+开局详情场景是产品核心场景。
 
-页面职责：
+场景职责：
 
 - 展示当前开局的棋盘预览。
 - 展示该开局下的变式列表。
@@ -180,11 +180,11 @@
 - 练习状态：未练 / 已完成 / 最近出错 / 连续全对。
 - 最近练习时间。
 
-### 3.4 变式编辑页
+### 3.4 变式编辑场景
 
-变式编辑页必须以棋盘为中心。
+变式编辑场景必须以棋盘为中心。
 
-页面职责：
+场景职责：
 
 - 录入走法。
 - 校验走法合法性。
@@ -207,11 +207,11 @@
 - 保存时如果没有名称，自动生成名称，例如“变式 1”。
 - 允许只记录开局片段，不要求必须到终局。
 
-### 3.5 变式浏览页
+### 3.5 变式浏览场景
 
-变式浏览页用于复盘，不改变数据。
+变式浏览场景用于复盘，不改变数据。
 
-页面职责：
+场景职责：
 
 - 回放变式。
 - 查看任一步局面。
@@ -227,11 +227,11 @@
 - 从当前变式开始练习。
 - 编辑变式。
 
-### 3.6 练习页
+### 3.6 练习场景
 
-练习页是最高优先级体验页。
+练习场景是最高优先级体验场景。
 
-页面职责：
+场景职责：
 
 - 引导用户按记录走自己的开局方。
 - 自动播放对手走法。
@@ -405,7 +405,7 @@
 
 #### 单条练习
 
-- 从某条变式详情页进入。
+- 从某条变式详情场景进入。
 - 只练当前变式。
 
 ### 6.2 练习方
@@ -668,7 +668,7 @@ type PracticeMistake = {
 
 ## 8. 状态机设计
 
-### 8.1 练习页状态
+### 8.1 练习场景状态
 
 ```ts
 type PracticeState =
@@ -725,29 +725,27 @@ type PracticeState =
 
 这样可以避免动画或自动走法期间误触导致状态错乱。
 
-## 9. 页面与组件设计
+## 9. 游戏场景与渲染模块设计
 
 ### 9.1 推荐工程结构
 
-小程序代码建议放在独立 `miniprogram/` 目录，仓库根目录保留文档、脚本和后续工具。
+小游戏代码建议放在独立 `miniprogram/` 目录，仓库根目录保留文档、脚本和后续工具。
 
 ```txt
 chess-opening/
   project.config.json
   miniprogram/
-    app.ts
-    app.json
-    app.wxss
-    pages/
-      openings/
-      opening-detail/
-      variation-edit/
-      variation-view/
-      practice/
-      settings/
-    components/
+    game.js
+    game.json
+    scenes/
+      opening-library.js
+      opening-detail.js
+      variation-edit.js
+      variation-view.js
+      practice.js
+      settings.js
+    ui/
       chess-board/
-      piece/
       move-list/
       opening-card/
       variation-card/
@@ -762,39 +760,37 @@ chess-opening/
       pieces/
         cburnett/
     styles/
+      theme.js
   docs/
     design-guideline.md
   LICENSES/
     cburnett.md
 ```
 
-微信小程序页面和组件应保持同名文件组：
+微信小游戏不使用小程序页面路由，也不依赖 WXML/WXSS 文件组。`game.js` 负责创建 Canvas、初始化场景管理器、分发触摸事件和触发渲染。核心 UI 应由 Canvas 渲染；少量文本输入、确认、提示可在 V1 中临时使用 `wx.showModal`、`wx.showToast` 等宿主能力。
+
+### 9.2 场景路由建议
+
+V1 仍保持和原产品路径一致的概念层级，但实现为游戏内场景，而不是小程序页面：
 
 ```txt
-pages/openings/openings.ts
-pages/openings/openings.wxml
-pages/openings/openings.wxss
-pages/openings/openings.json
+opening-library   开局库
+opening-detail    开局详情
+variation-edit    变式编辑
+variation-view    变式浏览
+practice          练习
+settings          设置
 ```
 
-组件也应保持同名文件组，并在组件 json 中声明 `component: true`。
+场景管理器至少需要支持：
 
-### 9.2 页面路由建议
+- `push(sceneName, params)`：进入下级场景。
+- `replace(sceneName, params)`：替换当前场景。
+- `back()`：返回上一场景。
+- `render(ctx)`：绘制当前场景。
+- `handleTouch(point)`：把触摸输入交给当前场景处理。
 
-```json
-{
-  "pages": [
-    "pages/openings/openings",
-    "pages/opening-detail/opening-detail",
-    "pages/variation-edit/variation-edit",
-    "pages/variation-view/variation-view",
-    "pages/practice/practice",
-    "pages/settings/settings"
-  ]
-}
-```
-
-### 9.3 核心组件
+### 9.3 核心渲染模块
 
 #### chess-board
 
@@ -806,7 +802,7 @@ pages/openings/openings.json
 - 展示高亮。
 - 根据方向翻转棋盘。
 
-输入属性：
+输入：
 
 - `positionFen`
 - `orientation`
@@ -815,26 +811,24 @@ pages/openings/openings.json
 - `highlights`
 - `disabled`
 
-输出事件：
+输出：
 
 - `squaretap`
-- `movetry`
-- `promotionrequired`
 
 #### move-list
 
 职责：
 
-- 展示变式走法。
-- 按完整回合展示白方和黑方走法。
-- 支持点击某一步跳转。
+- 展示 SAN 走法列表。
+- 支持当前步高亮。
+- 支持点击某一步跳转局面。
 
-#### promotion-picker
+#### opening-card
 
 职责：
 
-- 展示升变选择。
-- 返回升变棋子。
+- 展示开局名称、练习方、标签、变式数和最近练习状态。
+- 响应点击进入开局详情。
 
 #### variation-card
 
@@ -843,6 +837,14 @@ pages/openings/openings.json
 - 展示变式摘要。
 - 展示最近练习状态。
 - 进入浏览或练习。
+
+#### promotion-picker
+
+职责：
+
+- 在升变时绘制四个候选棋子。
+- 默认高亮皇后。
+- 用户选择前不提交走法。
 
 #### practice-result
 
@@ -855,7 +857,7 @@ pages/openings/openings.json
 
 ### 10.1 职责
 
-`services/chess/` 应封装所有棋规相关逻辑，页面和组件不直接判断复杂规则。
+`services/chess/` 应封装所有棋规相关逻辑，场景和渲染模块不直接判断复杂规则。
 
 主要能力：
 
@@ -901,7 +903,7 @@ type TryMoveResult =
 - 是否支持 FEN。
 - 是否支持 SAN。
 - 是否支持王车易位、吃过路兵、升变。
-- 是否适合微信小程序构建环境。
+- 是否适合微信小游戏构建环境。
 
 如果后续引入第三方库，应记录其许可证。
 
@@ -965,27 +967,27 @@ chessOpening.appData.v2
 
 ### 12.2 色彩
 
-建议建立 CSS 变量：
+建议建立 Canvas 主题 token：
 
-```css
-page {
-  --color-bg: #f7f2e8;
-  --color-panel: #fffaf0;
-  --color-text: #2c2418;
-  --color-muted: #8a7a65;
-  --color-border: #e2d3bd;
-  --color-primary: #2f6f4e;
-  --color-primary-weak: #dcebdd;
-  --color-danger: #c94c43;
-  --color-warning: #c98b2e;
-  --board-light: #f0d9b5;
-  --board-dark: #b58863;
-}
+```js
+const theme = {
+  colorBg: '#f7f2e8',
+  colorPanel: '#fffaf0',
+  colorText: '#2c2418',
+  colorMuted: '#8a7a65',
+  colorBorder: '#e2d3bd',
+  colorPrimary: '#2f6f4e',
+  colorPrimaryWeak: '#dcebdd',
+  colorDanger: '#c94c43',
+  colorWarning: '#c98b2e',
+  boardLight: '#f0d9b5',
+  boardDark: '#b58863',
+};
 ```
 
 ### 12.3 字体与排版
 
-微信小程序内字体选择有限，优先保证可读性。
+微信小游戏 Canvas 内字体选择有限，优先保证可读性。
 
 建议：
 
@@ -1069,13 +1071,13 @@ LICENSES/cburnett.md
 
 ### 13.3 授权注意
 
-因为该素材是 GPLv2+，后续如果小程序不是仅个人使用，而是发布、分发或商业化，需要重新评估授权影响。第一版个人使用也应保留来源和许可证说明，避免后续遗忘。
+因为该素材是 GPLv2+，后续如果小游戏不是仅个人使用，而是发布、分发或商业化，需要重新评估授权影响。第一版个人使用也应保留来源和许可证说明，避免后续遗忘。
 
 ## 14. 错误与边界情况
 
 ### 14.1 空数据
 
-首页没有开局时：
+开局库没有开局时：
 
 - 显示空状态。
 - 文案：“还没有开局，先创建一个训练主题。”
@@ -1227,9 +1229,9 @@ LICENSES/cburnett.md
 
 建议按以下顺序开发：
 
-1. 搭建微信小程序 TypeScript 基础工程。
+1. 搭建微信小游戏 Canvas 基础工程。
 2. 引入或封装国际象棋规则服务。
-3. 实现棋盘组件和棋子渲染。
+3. 实现棋盘渲染模块和棋子渲染。
 4. 实现本地存储模型。
 5. 实现开局库和开局详情。
 6. 实现变式编辑。
