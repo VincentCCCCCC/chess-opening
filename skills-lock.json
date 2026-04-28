@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "skills": {
+    "miniapp-center-hub-refactor": {
+      "source": "Sun-sunshine06/miniprogram-skills",
+      "sourceType": "github",
+      "skillPath": "skills/miniapp-center-hub-refactor/SKILL.md",
+      "computedHash": "abd95b24225e1f240de8bc854997660ae44e9d6d7561db317270079ad7bb01a4"
+    },
+    "miniapp-devtools-cli-repair": {
+      "source": "Sun-sunshine06/miniprogram-skills",
+      "sourceType": "github",
+      "skillPath": "skills/miniapp-devtools-cli-repair/SKILL.md",
+      "computedHash": "b937a9f833142f17efe94d6c90c69951c380a0bc10b7340a53eda82a774ab9aa"
+    },
+    "miniapp-devtools-gui-check": {
+      "source": "Sun-sunshine06/miniprogram-skills",
+      "sourceType": "github",
+      "skillPath": "skills/miniapp-devtools-gui-check/SKILL.md",
+      "computedHash": "4a288167915424e9cc050acf34cfde0a4ae3bce03d76db0ca7e253a2a146b629"
+    },
+    "miniapp-devtools-recovery": {
+      "source": "Sun-sunshine06/miniprogram-skills",
+      "sourceType": "github",
+      "skillPath": "skills/miniapp-devtools-recovery/SKILL.md",
+      "computedHash": "4ff6bbf0dabbb57c40b37fe76abf5278301dd36b47cfa9f8009ec1376fdc8d5a"
+    },
+    "miniapp-official-scaffold-alignment": {
+      "source": "Sun-sunshine06/miniprogram-skills",
+      "sourceType": "github",
+      "skillPath": "skills/miniapp-official-scaffold-alignment/SKILL.md",
+      "computedHash": "3505d24302aa0000f1aa0851f129427c55c0c0f44db7bcf7e2458e51778c0de1"
+    },
+    "miniapp-user-facing-copy-trim": {
+      "source": "Sun-sunshine06/miniprogram-skills",
+      "sourceType": "github",
+      "skillPath": "skills/miniapp-user-facing-copy-trim/SKILL.md",
+      "computedHash": "db6e2258312704b29d5e1b5904ea9517771a5e314f88c2362689902cb1ea30a0"
+    }
+  }
+}
